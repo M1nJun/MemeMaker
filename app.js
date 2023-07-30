@@ -1,12 +1,12 @@
+const color = document.getElementById("color");
+const lineWidth = document.getElementById("line-width");
 const canvas = document.querySelector("canvas");
 //context is the brush that we will draw with
 const ctx = canvas.getContext("2d");
 
 canvas.width = 800;
 canvas.height = 800;
-
-ctx.lineWidth = 2;
-
+ctx.lineWidth = lineWidth.value;
 let isPainting = false;
 
 function onMove(event) {
@@ -15,6 +15,7 @@ function onMove(event) {
     ctx.stroke();
     return;
   }
+  ctx.beginPath();
   ctx.moveTo(event.offsetX, event.offsetY);
 }
 
@@ -25,7 +26,19 @@ function cancelPainting() {
   isPainting = false;
 }
 
+function onLineWidthChange(event) {
+  ctx.lineWidth = event.target.value;
+}
+
+function onColorChange(event) {
+  ctx.strokeStyle = event.target.value;
+  ctx.fillStyle = event.target.value;
+}
+
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
 canvas.addEventListener("mouseleave", cancelPainting);
+
+lineWidth.addEventListener("change", onLineWidthChange);
+color.addEventListener("change", onColorChange);
