@@ -32,7 +32,7 @@ body {
 .color-options {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   align-items: center;
 }
 .color-option {

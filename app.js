@@ -20,7 +20,7 @@ const CANVAS_HEIGHT = 800;
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 ctx.lineWidth = lineWidth.value;
-ctx.lineCap = round;
+ctx.lineCap = "round";
 let isPainting = false;
 let isFilling = false;
 
@@ -74,8 +74,10 @@ function onCanvasClick() {
 }
 
 function onDestroyClick() {
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  if (window.confirm("Are you sure you want to destroy everything?")) {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  }
 }
 
 function onEraserClick() {
