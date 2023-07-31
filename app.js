@@ -75,8 +75,10 @@ function onCanvasClick() {
 
 function onDestroyClick() {
   if (window.confirm("Are you sure you want to destroy everything?")) {
+    ctx.save();
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    ctx.restore();
   }
 }
 
@@ -116,7 +118,7 @@ function onSaveClick() {
   a.click();
 }
 
-canvas.addEventListener("dbclick", onDoubleClick);
+canvas.addEventListener("dblclick", onDoubleClick);
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
